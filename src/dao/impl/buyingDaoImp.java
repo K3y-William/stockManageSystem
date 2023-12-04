@@ -207,8 +207,8 @@ public class buyingDaoImp implements transactionDao {
 
         //if not insert one with status unprocessed
         else{
-            Object obj[] = {transaction.getUser_id(),transaction.getStock_id(),transaction.getAmounts(),transaction.getPrice(),transaction.getDate(),"unprocessed"};
-            String sql = "insert into request_platform values (?,?,?,?,?,?)";
+            Object obj[] = {transaction.getUser_id(),transaction.getStock_id(),transaction.getAmounts(),transaction.getPrice(),transaction.getDate(),transaction.getStatus()};
+            String sql = "insert into buying_platform values (?,?,?,?,?,?)";
             return exeUpdate(sql,obj);
         }
 

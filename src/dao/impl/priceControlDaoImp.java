@@ -130,4 +130,11 @@ public class priceControlDaoImp implements priceControlDao {
         String sql = "delete from stock_price where stock_id = ?";
         return exeUpdate(sql,obj);
     }
+
+    @Override
+    public int updatePrice(int stock_id, double price) {
+        Object obj[] = {price,stock_id};
+        String sql = "update stock_price set stock_price = ? where stock_id = ?";
+        return exeUpdate(sql,obj);
+    }
 }

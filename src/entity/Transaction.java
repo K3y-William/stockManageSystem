@@ -51,4 +51,16 @@ public class Transaction {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "user_id=" + user_id +
+                ", stock_id=" + stock_id +
+                ", amounts=" + amounts +
+                ", price=" + price +
+                ", date=" + date +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

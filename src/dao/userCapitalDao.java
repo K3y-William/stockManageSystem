@@ -7,4 +7,6 @@ public interface userCapitalDao {
 
     //update user's capital by changingAmount
     int updateCapital(int user_id, double changingAmount);
+
+    int insert(int user_id, double capital);
 }

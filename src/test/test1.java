@@ -1,20 +1,35 @@
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonArray;
+import dao.impl.priceControlDaoImp;
+import dao.priceControlDao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class test1 {
+    static List<String> stockTag = new ArrayList<>();
+    static int[] stock_id = new int[]{1,2,3};
+    private static priceControlDao priceControlDao = new priceControlDaoImp();
 
     public static void main(String[] args) {
+        stockTag.add("A");
+        stockTag.add("AA");
+        stockTag.add("AAA");
         // 示例：调用 API 并提取数据
         System.out.println(callApiAndExtractData("AAPL", "2023-01-09", "2023-01-09"));
-        System.out.println(callApiAndExtractData("GOOGL", "2023-01-10", "2023-01-10"));
+        System.out.println(callApiAndExtractData("A", "2023-01-01", "2023-01-01"));
+        System.out.println(callApiAndExtractData("AA", "2023-01-10", "2023-01-10"));
+        System.out.println(callApiAndExtractData("AAA", "2023-01-10", "2023-01-10"));
         // 可以根据需要调用多次，传递不同的参数
+
+        double price = callApiAndExtractData("A", "2023-01-10", "2023-01-10");
+
     }
 
     private static double callApiAndExtractData(String symbol, String startDate, String endDate) {

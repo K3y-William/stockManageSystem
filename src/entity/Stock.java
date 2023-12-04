@@ -28,6 +28,8 @@ public class Stock implements Serializable {
         this.stock_id = id;
     }
 
+
+
     public Stock() {
 
     }
@@ -59,8 +61,9 @@ public class Stock implements Serializable {
 
     @Override
     public String toString() {
-        return "stock{" +
+        return "Stock{" +
                 "stock_id=" + stock_id +
+                ", stock_price=" + stock_price +
                 ", stock_num=" + stock_num +
                 ", date=" + date +
                 '}';

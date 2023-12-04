@@ -58,7 +58,7 @@ public class sellingDaoImp implements transactionDao {
 
         String sql = "select * from selling_platform " +
                 "where stock_id = ?  and status != 'completed' " +
-                "order by request_price ASC, request_date ASC ";
+                "order by selling_price ASC, selling_date ASC ";
 
         try {
             pstm = conn.prepareStatement(sql);
@@ -205,7 +205,7 @@ public class sellingDaoImp implements transactionDao {
             return exeUpdate(sql,obj);
         }
         else{
-            Object obj[] = {transaction.getUser_id(),transaction.getStock_id(),transaction.getAmounts(),transaction.getPrice(),transaction.getDate(), "unprocessed"};
+            Object obj[] = {transaction.getUser_id(),transaction.getStock_id(),transaction.getAmounts(),transaction.getPrice(),transaction.getDate(), transaction.getStatus()};
             String sql = "insert into selling_platform values (?,?,?,?,?,?)";
             return exeUpdate(sql,obj);
         }

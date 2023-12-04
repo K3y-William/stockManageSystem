@@ -21,13 +21,14 @@ public class userStockDaoImp implements userStockDao {
         //query all the stock info based on user_id from property
         //then use stock_id query current_price from stock_price
         String sql =
-                "select rs.stock_id,stock_num,current_price,buying_date from " +
+                "select rs.stock_id,rs.stock_num,stock_price,rs.buying_date from " +
                     "(select property.stock_id,stock_num,buying_date " +
-                    "from property where user_id =" + id +") as rs " +
-                 "outer join stock_price on rs.stock_id = stock_price.stock_id";
+                    "from property where user_id = ?) as rs " +
+                 "left outer join stock_price on rs.stock_id = stock_price.stock_id";
 
         try {
             pstm = conn.prepareStatement(sql);
+            pstm.setInt(1,id);
             rs = pstm.executeQuery();
             while (rs.next()){
                 //extract data from rs

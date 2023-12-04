@@ -22,7 +22,7 @@ public class userCapitalDaoImp implements userCapitalDao {
         ResultSet rs = null;
 
         String sql =
-                "select user_capital from property whre user_id = ?";
+                "select user_capital from user_capital where user_id = ?";
 
         try {
             pstm = conn.prepareStatement(sql);
@@ -45,6 +45,13 @@ public class userCapitalDaoImp implements userCapitalDao {
     public int updateCapital(int user_id, double changingAmount) {
         Object obj[] = {changingAmount,user_id};
         String sql = "update user_capital set user_capital = user_capital + ? where user_id = ?";
+        return exeUpdate(sql,obj);
+    }
+
+    @Override
+    public int insert(int user_id, double capital) {
+        Object obj[] = {user_id,capital};
+        String sql = "insert into user_capital values (?,?)";
         return exeUpdate(sql,obj);
     }
 }

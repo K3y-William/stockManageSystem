@@ -21,4 +21,6 @@ public interface priceControlDao {
 
     //delete one of stock
     int delete(int stock_id);
+
+    int updatePrice(int stock_id, double price);
 }
